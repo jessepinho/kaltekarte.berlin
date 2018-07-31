@@ -1,35 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
-body {
-  font-family: Roboto, sans-serif;
-  overflow: hidden;
-}
-
-#add-button {
-  position: fixed;
-
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  z-index: 1;
-
-  background: #4d6a79;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-  display: block;
-  font-weight: bold;
-  line-height: 1.5em;
-  max-width: 200px;
-  padding: 0.5rem 0;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: opacity 0.35s;
-}
-
-#map {
+#app {
   position: fixed;
   top: 0;
   right: 0;
@@ -38,65 +9,51 @@ body {
   width: 100%;
   height: 100%;
 
-  border: none;
+  display: flex;
+  flex-direction: column;
 }
 
-#modal {
-  position: fixed;
-  z-index: 2;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50%;
-  height: 50%;
-
-  background: rgba(255, 255, 255, 0.9);
-  padding: 1rem;
-  transition: opacity 0.35s;
+body {
+  font-family: Roboto, sans-serif;
+  overflow: hidden;
 }
 
-@media only screen and (min-width: 768px) {
-  #modal {
-    background: rgba(255, 255, 255, 0.7);
-  }
+#add-button {
+  flex-grow: 1;
 }
 
-#close-modal:checked + #modal {
-  opacity: 0;
-  pointer-events: none;
-}
-
-#close-modal + #modal + #add-button {
-  opacity: 0;
-  pointer-events: none;
-}
-
-#close-modal:checked + #modal + #add-button {
-  opacity: 1;
-  pointer-events: all;
-}
-
-#modal > h1 {
-  color: #4d6a79;
-  font-size: 2rem;
-  line-height: 1.25em;
-  margin-bottom: 1em;
-}
-
-#modal > p {
-  line-height: 1.5em;
-  margin-bottom: 1.5em;
-}
-
-label[for="close-modal"] {
+.button {
   background: #4d6a79;
-  border-radius: 5px;
+  box-sizing: border-box;
   color: white;
   cursor: pointer;
   display: block;
   font-weight: bold;
-  max-width: 200px;
-  padding: 0.5rem 0;
+  line-height: 1.5em;
+  padding: 1rem;
   text-align: center;
+  text-decoration: none;
   text-transform: uppercase;
+}
+
+#buttons {
+  display: flex;
+}
+
+#twitter-button {
+  background-image: url(./twitter.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  border-left: 2px solid white;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  width: 65px;
+}
+
+#map {
+  border: none;
+  flex-grow: 1;
+  width: 100%;
 }

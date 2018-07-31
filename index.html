@@ -34,16 +34,18 @@
   <meta property="og:image:height" content="720" />
 </head>
 <body>
-  <iframe src="https://www.google.com/maps/d/u/1/embed?mid=1-E2_36nT5MzhQH-0CoPhu2a9Cly8qm7l" width="640" height="480" id="map"></iframe>
-  <input type="checkbox" id="close-modal" />
-  <section id="modal">
-    <h1>Chill out.</h1>
-    <p>Kalte Karte is a map of all the air-conditioned spots in Berlin where you can beat the heat.</p>
-    <p>Know a place that isn't listed here? <a href="https://docs.google.com/forms/d/e/1FAIpQLScgFQNGZXAQaq0lIyHrB8Uxi9EQhOyE0KoQAiGTopB87YlGnA/viewform?usp=sf_link" target="_blank">Let me know!</a></p>
-    <p><label for="close-modal">Got it</label></p>
-  </section>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLScgFQNGZXAQaq0lIyHrB8Uxi9EQhOyE0KoQAiGTopB87YlGnA/viewform?usp=sf_link" target="_blank" id="add-button">
-    Add a location
-  </a>
+  <div id="app">
+    <iframe src="https://www.google.com/maps/d/u/1/embed?mid=1-E2_36nT5MzhQH-0CoPhu2a9Cly8qm7l&ll=current+location" width="640" height="480" id="map"></iframe>
+
+    <footer id="buttons">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScgFQNGZXAQaq0lIyHrB8Uxi9EQhOyE0KoQAiGTopB87YlGnA/viewform?usp=sf_link" target="_blank" class="button" id="add-button">
+        Add a location
+      </a>
+
+      <a href="https://twitter.com/jessepinho/status/1024265096657350657" target="_blank" class="button" id="twitter-button">
+        A @jessepinho project
+      </a>
+    </footer>
+  </div>
 </body>
 </html>

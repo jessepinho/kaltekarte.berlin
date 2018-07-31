@@ -5,6 +5,30 @@ body {
   overflow: hidden;
 }
 
+#add-button {
+  position: fixed;
+
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 1;
+
+  background: #4d6a79;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+  line-height: 1.5em;
+  max-width: 200px;
+  padding: 0.5rem 0;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 0.35s;
+}
+
 #map {
   position: fixed;
   top: 0;
@@ -19,7 +43,7 @@ body {
 
 #modal {
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -40,6 +64,16 @@ body {
 #close-modal:checked + #modal {
   opacity: 0;
   pointer-events: none;
+}
+
+#close-modal + #modal + #add-button {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#close-modal:checked + #modal + #add-button {
+  opacity: 1;
+  pointer-events: all;
 }
 
 #modal > h1 {

@@ -31,11 +31,30 @@
 
 
   <script>
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        document.getElementById("map").src = "https://www.google.com/maps/d/u/1/embed?mid=1-E2_36nT5MzhQH-0CoPhu2a9Cly8qm7l&&ll=" + position.coords.latitude + "," + position.coords.longitude
+    document.addEventListener("DOMContentLoaded", function() {
+      var map = document.getElementById("map")
+      var searchCheckbox = document.getElementById("search-checkbox")
+      var searchForm = document.getElementById("search-form")
+      var searchInput = document.getElementById("search-input")
+
+      searchCheckbox.addEventListener("change", function(event) {
+        if (event.target.checked) {
+          searchInput.focus()
+        }
       })
-    }
+
+      searchForm.addEventListener("submit", function(event) {
+        event.preventDefault()
+        var baseMapURL = "https://www.google.com/maps/embed/v1/search?mid=1-E2_36nT5MzhQH-0CoPhu2a9Cly8qm7l"
+        map.src = baseMapURL + "&q=" + encodeURIComponent(searchInput.value)
+      })
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          map.src = "https://www.google.com/maps/d/u/1/embed?mid=1-E2_36nT5MzhQH-0CoPhu2a9Cly8qm7l&&ll=" + position.coords.latitude + "," + position.coords.longitude
+        })
+      }
+    })
   </script>
 
   <meta charset="utf-8" />
@@ -44,6 +63,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="reset.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
   <meta property="og:title" content="Kalte Karte - air-conditioned places in Berlin" />
   <meta property="og:description" content="Kalte Karte is a map of all the air-conditioned spots in Berlin where you can beat the heat." />
   <meta property="og:type" content="website" />
@@ -58,9 +79,19 @@
     <iframe src="https://www.google.com/maps/d/u/1/embed?mid=1-E2_36nT5MzhQH-0CoPhu2a9Cly8qm7l" width="640" height="480" id="map"></iframe>
 
     <footer id="buttons">
+      <input type="checkbox" id="search-checkbox" />
+
       <a href="https://docs.google.com/forms/d/e/1FAIpQLScgFQNGZXAQaq0lIyHrB8Uxi9EQhOyE0KoQAiGTopB87YlGnA/viewform?usp=sf_link" target="_blank" class="button" id="add-button">
         Add a location
       </a>
+
+      <form id="search-form" action="/">
+        <input type="search" id="search-input" />
+      </form>
+
+      <label class="button" id="search-button" for="search-checkbox">
+        <i class="fas fa-search"></i>
+      </label>
 
       <a href="https://twitter.com/jessepinho/status/1024265096657350657" target="_blank" class="button" id="twitter-button">
         A @jessepinho project

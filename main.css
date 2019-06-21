@@ -47,7 +47,7 @@ body {
   background-size: 20px;
   border-left: 2px solid white;
   overflow: hidden;
-  text-indent: 100%;
+  text-indent: 65px;
   white-space: nowrap;
   width: 65px;
 }

@@ -18,42 +18,72 @@ body {
   overflow: hidden;
 }
 
-#add-button {
-  flex-grow: 1;
-}
-
-.button {
-  background: #4d6a79;
-  box-sizing: border-box;
-  color: white;
-  cursor: pointer;
-  display: block;
-  font-weight: bold;
-  line-height: 1.5em;
-  padding: 1rem;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-#buttons {
-  display: flex;
-}
-
 #twitter-button {
   background-image: url(./twitter.svg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 20px;
-  border-left: 2px solid white;
-  overflow: hidden;
-  text-indent: 65px;
-  white-space: nowrap;
-  width: 65px;
 }
 
 #map {
   border: none;
   flex-grow: 1;
   width: 100%;
+}
+
+#buttons-level-1 {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+#hamburger-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+
+  opacity: 1;
+
+  z-index: 1;
+}
+
+#hamburger-button:focus {
+  outline: none;
+}
+
+#hamburger-button:checked + #buttons-level-2 > #add-button {
+  transform: translateY(-58px);
+}
+
+#hamburger-button:checked + #buttons-level-2 > #twitter-button {
+  transform: translateY(-116px);
+}
+
+.button {
+  display: block;
+  width: 50px;
+  height: 50px;
+
+  margin: 0 0 8px;
+
+  background: rgb(59, 136, 203);
+  border: none;
+  border-radius: 50%;
+  color: transparent;
+  cursor: pointer;
+
+  position: absolute;
+  transition: transform 0.15s ease-out, opacity 0.15s;
+  bottom: 0;
+  right: 0;
+
+  opacity: 0;
+
+  will-change: transform;
+}
+
+
+#hamburger-button:checked + #buttons-level-2 > .button {
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.05s;
+  opacity: 1;
 }
